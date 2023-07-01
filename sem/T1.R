@@ -1,11 +1,11 @@
 library(lavaan)
 library(semPlot)
 #第二步：导入数据
-#1.data1 <- read.csv("筛选1.csv")
-#报错Error in make.names(col.names, unique = TRUE) : invalid multibyte string 10
-#采用import导入数据
-#2.报错Error in lavData(data = data, group = group, cluster = cluster, ov.names = OV.NAMES,  : lavaan ERROR: data= argument is not a data.fame, but of class ‘character’
-#3.回到方法1，检查输入的列名是否包含特殊字符、空格、非ASCII字符或其他无效字符。如果有，删除或替换这些字符。
+         #1.data1 <- read.csv("筛选1.csv")
+         #报错Error in make.names(col.names, unique = TRUE) : invalid multibyte string 10
+         #采用import导入数据
+         #2.报错Error in lavData(data = data, group = group, cluster = cluster, ov.names = OV.NAMES,  : lavaan ERROR: data= argument is not a data.fame, but of class ‘character’
+         #3.回到方法1，检查输入的列名是否包含特殊字符、空格、非ASCII字符或其他无效字符。如果有，删除或替换这些字符。
 data1 <- read.csv("筛选2.csv")
 #第三步：建立模型
 model <- ' 
