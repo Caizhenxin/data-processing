@@ -1,0 +1,101 @@
+---
+title: "Rの学习之旅（Markdown版）"
+author: "czx"
+date: "2023-12-11开始"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+data <- read.csv("原数据（有缺失值）.csv")
+```
+
+
+这一部分是我用来记录R语言学习的一部分Rnotebook  
+因为还是编程萌新，遇到的不会的都会记录下来  
+比如说这个换行需要在这一行的末尾要打俩空格才能换行  
+还可以使用“反斜杠”换行\
+\
+\
+**不积跬步无以至千里**\
+**不积小流无以成江海**\
+每天都练习一点点，相信自己，你一定可以ヾ(◍°∇°◍)ﾉﾞ
+\
+\
+
+#  缺失值的处理  
+|     在R中，你可以使用几种方法来处理数据中的缺失值。这些方法包括删除含有缺失值的行、列或用均值、中位数等替换缺失值。  
+
+### 1. 删除含有缺失值的行或列
+|     如果你的数据集中只有少量的缺失值，你可以选择直接删除含有缺失值的行或列。在R中，你可以使用na.omit()函数来删除含有NA值的行。
+
+```{r prompt=TRUE}
+### 删除含有NA的行  
+data1 <- na.omit(data)
+```
+
+### 2. 用均值、中位数或众数替换缺失值
+|     对于数值型数据，你可以选择用均值、中位数替换缺失值；对于分类数据，可以选择用众数替换。  
+```{r prompt=TRUE}
+# 找出数值型列  
+num_cols <- sapply(data, is.numeric)  
+  
+# 对数值型列进行均值替换  
+data[, num_cols] <- apply(data[, num_cols], 2, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x))
+```
+
+
+
+```{r prompt=TRUE}
+# # 用均值替换NA（数值型数据）  
+# data[is.na(data)] <- mean(data, na.rm = TRUE)  
+#   
+# # 用中位数替换NA（数值型数据）  
+# data[is.na(data)] <- median(data, na.rm = TRUE)  
+#   
+# # 用众数替换NA（分类数据）  
+# data[is.na(data)] <- as.numeric(names(table(data)[table(data) == max(table(data))]))
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+以下是具体的步骤:(以本数据为例)  
+先读取文件  
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
