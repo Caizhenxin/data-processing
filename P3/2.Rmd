@@ -22,6 +22,7 @@ data <- read.csv("原数据（有缺失值）.csv")
 每天都练习一点点，相信自己，你一定可以ヾ(◍°∇°◍)ﾉﾞ
 \
 \
+\newpage  
 
 #  缺失值的处理  
 |     在R中，你可以使用几种方法来处理数据中的缺失值。这些方法包括删除含有缺失值的行、列或用均值、中位数等替换缺失值。  
@@ -30,8 +31,11 @@ data <- read.csv("原数据（有缺失值）.csv")
 |     如果你的数据集中只有少量的缺失值，你可以选择直接删除含有缺失值的行或列。在R中，你可以使用na.omit()函数来删除含有NA值的行。
 
 ```{r prompt=TRUE}
-### 删除含有NA的行  
-data1 <- na.omit(data)
+# 删除含有NA的行  
+data1.1 <- na.omit(data)
+# 删除含有NA的列  
+data1.2 <- data[, colSums(is.na(data)) == 0]
+
 ```
 
 ### 2. 用均值、中位数或众数替换缺失值
@@ -42,6 +46,10 @@ num_cols <- sapply(data, is.numeric)
   
 # 对数值型列进行均值替换  
 data[, num_cols] <- apply(data[, num_cols], 2, function(x) ifelse(is.na(x), mean(x, na.rm = TRUE), x))
+
+# 用中位数替换NA（数值型数据）  
+data[, num_cols] <- apply(data[, num_cols], 2, function(x) ifelse(is.na(x), median(x, na.rm = TRUE), x))
+
 ```
 
 
@@ -57,45 +65,15 @@ data[, num_cols] <- apply(data[, num_cols], 2, function(x) ifelse(is.na(x), mean
 # data[is.na(data)] <- as.numeric(names(table(data)[table(data) == max(table(data))]))
 ```
 
+### 3. 用插值法或回归模型预测缺失值
+
+|     对于大量的缺失值或者需要更精确的值，你可能需要使用更复杂的方法，如插值法或回归模型来预测和填充缺失值。这通常需要更深入的数据分析和统计知识。
+
+### 4. 使用专门的包处理缺失值
+
+|     R有很多专门处理缺失值的包，如mice、VIM、missForest等。这些包提供了更全面的工具和方法来处理各种类型和数量的缺失值。  
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-以下是具体的步骤:(以本数据为例)  
-先读取文件  
-
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
