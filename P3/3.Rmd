@@ -15,7 +15,13 @@ data1.1 <- na.omit(data)
 
 ```
 
-# 
+## 人口统计学变量  
+```{r prompt=TRUE}
+# 人口统计学变量的定义  
+vars <- c("gender","age","grade","only_child","higher_education")  
+
+
+```
 
 
 
