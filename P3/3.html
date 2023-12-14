@@ -366,7 +366,33 @@ display: none;
 <div id="人口统计学变量" class="section level2">
 <h2>人口统计学变量</h2>
 <pre class="r"><code>&gt; # 人口统计学变量的定义  
-&gt; vars &lt;- c(&quot;grade&quot;,&quot;gender&quot;)</code></pre>
+&gt; vars &lt;- c(&quot;gender&quot;,&quot;age&quot;,&quot;grade&quot;,&quot;only_child&quot;,&quot;higher_education&quot;)  
+&gt; mytable1.1 &lt;- with(data1.1, table(gender))            #性别：1-男；2-女  
+&gt; mytable1.2 &lt;- with(data1.1, table(age))               #年龄  
+&gt; mytable1.3 &lt;- with(data1.1, table(grade))             #年级：7-初一；8-初二；9-初三；10-高一；11-高二  
+&gt; mytable1.4 &lt;- with(data1.1, table(only_child))        #独生子女：1-独生子女；2-非独生子女  
+&gt; mytable1.5 &lt;- with(data1.1, table(higher_education))  #（父母）更高的学历：1-父亲；2-母亲；3-一样高
+&gt; # 打印变量
+&gt; mytable1.1</code></pre>
+<pre><code>## gender
+##   1   2 
+## 160 155</code></pre>
+<pre class="r"><code>&gt; mytable1.2</code></pre>
+<pre><code>## age
+## 11 12 13 14 15 16 17 18 
+##  1 33 57 53 57 79 34  1</code></pre>
+<pre class="r"><code>&gt; mytable1.3</code></pre>
+<pre><code>## grade
+##  7  8  9 10 11 
+## 66 59 56 38 96</code></pre>
+<pre class="r"><code>&gt; mytable1.4</code></pre>
+<pre><code>## only_child
+##   1   2   3 
+## 150 164   1</code></pre>
+<pre class="r"><code>&gt; mytable1.5</code></pre>
+<pre><code>## higher_education
+##   1   2   3 
+## 164 121  30</code></pre>
 </div>
 <div id="r-markdown" class="section level2">
 <h2>R Markdown</h2>

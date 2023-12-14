@@ -12,14 +12,23 @@ output: html_document
 data <- read.csv("原数据（有缺失值）.csv")
 # 删除含有NA的行  
 data1.1 <- na.omit(data)
-
 ```
 
 ## 人口统计学变量  
 ```{r prompt=TRUE}
 # 人口统计学变量的定义  
 vars <- c("gender","age","grade","only_child","higher_education")  
-
+mytable1.1 <- with(data1.1, table(gender))            #性别：1-男；2-女  
+mytable1.2 <- with(data1.1, table(age))               #年龄  
+mytable1.3 <- with(data1.1, table(grade))             #年级：7-初一；8-初二；9-初三；10-高一；11-高二  
+mytable1.4 <- with(data1.1, table(only_child))        #独生子女：1-独生子女；2-非独生子女；3-不知道  
+mytable1.5 <- with(data1.1, table(higher_education))  #（父母）更高的学历：1-父亲；2-母亲；3-一样高
+# 打印变量
+mytable1.1
+mytable1.2
+mytable1.3
+mytable1.4
+mytable1.5
 
 ```
 
@@ -29,22 +38,3 @@ vars <- c("gender","age","grade","only_child","higher_education")
 
 
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
