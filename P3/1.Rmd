@@ -1,8 +1,10 @@
 ---
 title: "Rの学习之旅（R-notebook版）"
 author: "czx"
-output: html_notebook
-data: '原始数据（有缺失值）.csv'
+output:
+  html_document:
+    df_print: paged
+data: 原始数据（有缺失值）.csv
 ---
 这一部分是我用来记录R语言学习的一部分Rnotebook  
 因为还是编程萌新，遇到的不会的都会记录下来  
